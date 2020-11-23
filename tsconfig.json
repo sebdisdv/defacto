@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "target": "es5",
+        "resolveJsonModule": true,
+        "lib": [
+            "es2015",
+            "dom"
+        ],
+        "outDir": "dist",
+        "sourceMap": false,
+        "declaration": false
+    },
+    "include": [
+        "src"
+    ]
+}
