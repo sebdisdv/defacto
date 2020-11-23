@@ -10,6 +10,9 @@
     "lint": "eslint src/**/*.ts --format codeframe",
     "lint:fix": "eslint src/**/*.ts --format codeframe --fix"
   },
+  "_moduleAliases": {
+    "@config": "dist/config/index"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -21,6 +24,7 @@
     "express": "^4.17.1",
     "helmet": "^4.2.0",
     "joi": "^17.3.0",
+    "module-alias": "^2.2.2",
     "mongodb": "^3.6.3",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
