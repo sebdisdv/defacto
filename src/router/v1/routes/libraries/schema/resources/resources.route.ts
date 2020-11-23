@@ -11,7 +11,7 @@ import { ReqIdParams } from '../../../../../../types/routes';
 import { dbQuery, dbTransaction } from '../../../../../../utils/database';
 import { upload, validateDbId } from '../../../../../../utils/middlewares';
 import { aceInTheHole } from '../../../../../../utils/various';
-import { rename, mkdir, exists, unlink } from '../../../../../../utils/fs-async';
+import { rename, mkdir, unlink } from '../../../../../../utils/fs-async';
 
 import CONFIG from '../../../../../../config';
 

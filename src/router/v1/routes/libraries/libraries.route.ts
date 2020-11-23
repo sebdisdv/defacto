@@ -1,6 +1,7 @@
 import { Router, Request } from "express";
-import { DBLibraryDocument } from "../../../../types";
+import * as path from 'path';
 
+import { DBBookDocument, DBLibraryDocument } from "../../../../types";
 import { ApiError, ApiErrorCode } from '../../../../types/api/error';
 import { ApiGetLibraries, ApiGetLibrariesLid, ApiPatchLibrariesLidBody, ApiPostLibrariesBody, ApiPostLibrariesResult, ApiPutLibrariesLidBody } from '../../../../types/api/libraries';
 import { DBCollections } from '../../../../types/database/collections';
@@ -9,6 +10,9 @@ import { ReqIdParams } from '../../../../types/routes';
 import { dbQuery, dbTransaction } from '../../../../utils/database';
 import { validate, purge, validateDbId } from "../../../../utils/middlewares";
 import { aceInTheHole } from '../../../../utils/various';
+import { rename, mkdir, exists, unlink } from '../../../../utils/fs-async';
+
+import CONFIG from '../../../../config';
 
 import { purgePatchLibraries, purgePostLibraries, purgePutLibraries, validatePatchLibraries, validatePostOrPutLibraries } from "./utils";
 
@@ -100,8 +104,40 @@ export function route(router: Router): void {
         await aceInTheHole(res, async () => {
             const lid = req.idParams.lid;
             const deleted = await dbTransaction<boolean>(async (db, session) => {
-                const queryResult = await db.collection(DBCollections.LIBRARIES).deleteOne({ _id: lid }, { session });
-                return queryResult.deletedCount > 0;
+                const queryResult = await db.collection(DBCollections.LIBRARIES).findOneAndDelete({ _id: lid }, { session });
+                const library: DBLibraryDocument = queryResult.value;
+                const deleted = !!library;
+
+                if (deleted) {
+                    for (const resource of library.schema.resources) {
+                        try {
+                            const resourcePath = path.join(CONFIG.UPLOAD.STORED_LOCATIONS.LIBRARIES_SCHEMA(lid.toHexString()), resource);
+                            if (await exists(resourcePath)) {
+                                await unlink(resourcePath);
+                            }
+                        }
+                        catch (error) { }
+                    }
+                    
+                    const books: DBBookDocument[] = await db.collection(DBCollections.BOOKS).find({ libraryId: lid }, { session }).toArray();
+                    await db.collection(DBCollections.BOOKS).deleteMany({ libraryId: lid }, { session });
+                    
+                    for (const book of books) {
+
+                        for (const picture of book.pictures) {
+                            try {
+                                const picturePath = path.join(CONFIG.UPLOAD.STORED_LOCATIONS.LIBRARIES_BOOKS(lid.toHexString(), book._id), picture);
+                                if (await exists(picturePath)) {
+                                    await unlink(picturePath);
+                                }
+                            }
+                            catch (error) { }
+                        }
+
+                    }
+                }
+
+                return deleted;
             });
 
             if (!deleted) {
