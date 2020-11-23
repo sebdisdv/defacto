@@ -1,7 +1,7 @@
 import { Router } from "express";
 
-import { getIsbnInfo } from '../../../../utils/isbn-scratcher';
-import { aceInTheHole } from '../../../../utils/various';
+import { getIsbnInfo } from '@/utils/isbn-scratcher';
+import { aceInTheHole } from '@/utils/various';
 
 
 export function route(router: Router): void {

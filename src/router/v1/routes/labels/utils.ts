@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-import { ApiPatchLabelsLidBody, ApiPostLabelsBody, ApiPutLabelsLidBody } from '../../../../types/api/labels';
+import { ApiPatchLabelsLidBody, ApiPostLabelsBody, ApiPutLabelsLidBody } from '@/types/api/labels';
 
 export function validatePostOrPutLabels(body: any): boolean {
     const schema = Joi.object({

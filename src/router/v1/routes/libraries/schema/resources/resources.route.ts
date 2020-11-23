@@ -2,18 +2,18 @@ import { Router, Request } from 'express';
 import * as path from 'path';
 import { v4 as uuid } from 'uuid';
 
-import { DBLibraryDocument } from '../../../../../../types';
-import { ApiError, ApiErrorCode } from '../../../../../../types/api/error';
-import { ApiGetLibrariesLidSchemaResources, ApiPostLibrariesLidSchemaResourcesBody, ApiPostLibrariesLidSchemaResourcesResult } from '../../../../../../types/api/libraries/schema/resources';
-import { DBCollections } from '../../../../../../types/database/collections';
-import { ReqIdParams } from '../../../../../../types/routes';
+import { DBLibraryDocument } from '@/types';
+import { ApiError, ApiErrorCode } from '@/types/api/error';
+import { ApiGetLibrariesLidSchemaResources, ApiPostLibrariesLidSchemaResourcesBody, ApiPostLibrariesLidSchemaResourcesResult } from '@/types/api/libraries/schema/resources';
+import { DBCollections } from '@/types/database/collections';
+import { ReqIdParams } from '@/types/routes';
 
-import { dbQuery, dbTransaction } from '../../../../../../utils/database';
-import { upload, validateDbId } from '../../../../../../utils/middlewares';
-import { aceInTheHole } from '../../../../../../utils/various';
-import { rename, mkdir, unlink } from '../../../../../../utils/fs-async';
+import { dbQuery, dbTransaction } from '@/utils/database';
+import { upload, validateDbId } from '@/utils/middlewares';
+import { aceInTheHole } from '@/utils/various';
+import { rename, mkdir, unlink } from '@/utils/fs-async';
 
-import CONFIG from '../../../../../../config';
+import CONFIG from '@/config';
 
 export function route(router: Router): void {
 

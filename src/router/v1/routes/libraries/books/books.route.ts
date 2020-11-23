@@ -2,19 +2,19 @@ import { Router, Request } from 'express';
 import * as path from 'path';
 import { v4 as uuid } from 'uuid';
 
-import { DBBookDocument } from '../../../../../types';
+import { DBBookDocument } from '@/types';
 
-import { ApiError, ApiErrorCode } from '../../../../../types/api/error';
-import { ApiGetLibrariesLidBooks, ApiGetLibrariesLidBooksBid, ApiPatchLibrariesLidBooksBidBody, ApiPostLibrariesLidBooksBody, ApiPostLibrariesLidBooksResult, ApiPutLibrariesLidBooksBidBody } from '../../../../../types/api/libraries/books';
-import { DBCollections } from '../../../../../types/database/collections';
-import { ReqIdParams } from '../../../../../types/routes';
+import { ApiError, ApiErrorCode } from '@/types/api/error';
+import { ApiGetLibrariesLidBooks, ApiGetLibrariesLidBooksBid, ApiPatchLibrariesLidBooksBidBody, ApiPostLibrariesLidBooksBody, ApiPostLibrariesLidBooksResult, ApiPutLibrariesLidBooksBidBody } from '@/types/api/libraries/books';
+import { DBCollections } from '@/types/database/collections';
+import { ReqIdParams } from '@/types/routes';
 
-import { dbQuery, dbTransaction } from '../../../../../utils/database';
-import { validate, purge, validateDbId, deserializeDates, upload } from '../../../../../utils/middlewares';
-import { aceInTheHole } from '../../../../../utils/various';
-import { rename, mkdir, exists, unlink } from '../../../../../utils/fs-async';
+import { dbQuery, dbTransaction } from '@/utils/database';
+import { validate, purge, validateDbId, deserializeDates, upload } from '@/utils/middlewares';
+import { aceInTheHole } from '@/utils/various';
+import { rename, mkdir, exists, unlink } from '@/utils/fs-async';
 
-import CONFIG from '../../../../../config';
+import CONFIG from '@/config';
 
 import { validatePostOrPutBooks, purgePostBooks, purgePutBooks, validatePatchBooks, purgePatchBooks } from './utils';
 

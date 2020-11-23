@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-import { ApiPostLibrariesLidSchemaUbicationsBody } from '../../../../../../types/api/libraries/schema/ubications';
+import { ApiPostLibrariesLidSchemaUbicationsBody } from '@/types/api/libraries/schema/ubications';
 
 export function validatePostUbications(body: any): boolean {
     const schema = Joi.object({

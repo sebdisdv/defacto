@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { ApiError, ApiErrorCode } from '../../types/api';
+import { ApiError, ApiErrorCode } from '@/types/api';
 
 export function stringifyError(error: any): string {
     return JSON.stringify(error, Object.getOwnPropertyNames(error));

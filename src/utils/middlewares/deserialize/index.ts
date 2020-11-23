@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
-import { ApiError, ApiErrorCode } from '../../../types/api';
+import { ApiError, ApiErrorCode } from '@/types/api';
 
 export function deserializeDates(keys: string | string[], message: string = 'Internal server error during body parsing'): RequestHandler {
     keys = typeof keys === 'string' ? [keys] : keys;

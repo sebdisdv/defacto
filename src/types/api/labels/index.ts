@@ -1,4 +1,4 @@
-import { DBLabelDocument } from '../../database';
+import { DBLabelDocument } from '@/types/database';
 
 export type ApiGetLabels = DBLabelDocument[];
 

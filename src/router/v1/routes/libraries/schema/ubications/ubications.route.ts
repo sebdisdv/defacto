@@ -1,14 +1,14 @@
 import { Router, Request } from 'express';
 
-import { DBLibraryDocument } from '../../../../../../types';
-import { ApiError, ApiErrorCode } from '../../../../../../types/api/error';
-import { ApiGetLibrariesLidSchemaUbications, ApiPostLibrariesLidSchemaUbicationsBody } from '../../../../../../types/api/libraries/schema/ubications';
-import { DBCollections } from '../../../../../../types/database/collections';
-import { ReqIdParams } from '../../../../../../types/routes';
+import { DBLibraryDocument } from '@/types';
+import { ApiError, ApiErrorCode } from '@/types/api/error';
+import { ApiGetLibrariesLidSchemaUbications, ApiPostLibrariesLidSchemaUbicationsBody } from '@/types/api/libraries/schema/ubications';
+import { DBCollections } from '@/types/database/collections';
+import { ReqIdParams } from '@/types/routes';
 
-import { dbQuery } from '../../../../../../utils/database';
-import { purge, validate, validateDbId } from '../../../../../../utils/middlewares';
-import { aceInTheHole } from '../../../../../../utils/various';
+import { dbQuery } from '@/utils/database';
+import { purge, validate, validateDbId } from '@/utils/middlewares';
+import { aceInTheHole } from '@/utils/various';
 
 import { purgePostUbications, validatePostUbications } from './utils';
 

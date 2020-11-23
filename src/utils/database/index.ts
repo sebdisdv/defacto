@@ -1,5 +1,5 @@
 import { MongoClient, Db, ClientSession, TransactionOptions, ObjectID } from 'mongodb';
-import CONFIG from '../../config';
+import CONFIG from '@/config';
 
 export { ObjectID } from 'mongodb';
 

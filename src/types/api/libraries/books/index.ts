@@ -1,4 +1,4 @@
-import { DBBookDocument } from '../../../database';
+import { DBBookDocument } from '@/types/database';
 
 export type ApiGetLibrariesLidBooks = DBBookDocument[];
 

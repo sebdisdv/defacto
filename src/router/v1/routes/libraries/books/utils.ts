@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-import { ApiPatchLibrariesLidBooksBidBody, ApiPostLibrariesLidBooksBody, ApiPutLibrariesLidBooksBidBody } from '../../../../../types/api/libraries/books';
+import { ApiPatchLibrariesLidBooksBidBody, ApiPostLibrariesLidBooksBody, ApiPutLibrariesLidBooksBidBody } from '@/types/api/libraries/books';
 
 export function validatePostOrPutBooks(body: any): boolean {
     const schema = Joi.object({

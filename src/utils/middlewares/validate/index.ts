@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
-import { ApiError, ApiErrorCode } from '../../../types/api';
-import { dbId } from '../../database';
-import { stringifyError } from '../../various';
+import { ApiError, ApiErrorCode } from '@/types/api';
+import { dbId } from '@/utils/database';
 
 export function validate(validator: (body: any) => boolean, message: string = 'Invalid body'): RequestHandler {
     return (req: Request, res: Response, next: NextFunction) => {

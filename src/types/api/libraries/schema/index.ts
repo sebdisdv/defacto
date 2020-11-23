@@ -1,3 +1,3 @@
-import { DBLibrarySchema } from '../../../database';
+import { DBLibrarySchema } from '@/types/database';
 
 export type ApiGetLibrariesLidSchema = DBLibrarySchema;

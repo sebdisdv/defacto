@@ -1,4 +1,4 @@
-import { DBLibraryDocument } from '../../database';
+import { DBLibraryDocument } from '@/types/database';
 
 export type ApiGetLibraries = DBLibraryDocument[];
 

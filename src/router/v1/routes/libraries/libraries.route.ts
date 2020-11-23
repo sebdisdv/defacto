@@ -1,18 +1,18 @@
 import { Router, Request } from "express";
 import * as path from 'path';
 
-import { DBBookDocument, DBLibraryDocument } from "../../../../types";
-import { ApiError, ApiErrorCode } from '../../../../types/api/error';
-import { ApiGetLibraries, ApiGetLibrariesLid, ApiPatchLibrariesLidBody, ApiPostLibrariesBody, ApiPostLibrariesResult, ApiPutLibrariesLidBody } from '../../../../types/api/libraries';
-import { DBCollections } from '../../../../types/database/collections';
-import { ReqIdParams } from '../../../../types/routes';
+import { DBBookDocument, DBLibraryDocument } from "@/types";
+import { ApiError, ApiErrorCode } from '@/types/api/error';
+import { ApiGetLibraries, ApiGetLibrariesLid, ApiPatchLibrariesLidBody, ApiPostLibrariesBody, ApiPostLibrariesResult, ApiPutLibrariesLidBody } from '@/types/api/libraries';
+import { DBCollections } from '@/types/database/collections';
+import { ReqIdParams } from '@/types/routes';
 
-import { dbQuery, dbTransaction } from '../../../../utils/database';
-import { validate, purge, validateDbId } from "../../../../utils/middlewares";
-import { aceInTheHole } from '../../../../utils/various';
-import { exists, unlink } from '../../../../utils/fs-async';
+import { dbQuery, dbTransaction } from '@/utils/database';
+import { validate, purge, validateDbId } from "@/utils/middlewares";
+import { aceInTheHole } from '@/utils/various';
+import { exists, unlink } from '@/utils/fs-async';
 
-import CONFIG from '../../../../config';
+import CONFIG from '@/config';
 
 import { purgePatchLibraries, purgePostLibraries, purgePutLibraries, validatePatchLibraries, validatePostOrPutLibraries } from "./utils";
 

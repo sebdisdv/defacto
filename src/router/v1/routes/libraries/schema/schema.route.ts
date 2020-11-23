@@ -1,15 +1,15 @@
 import { Router, Request } from 'express';
 
-import { DBLibraryDocument } from '../../../../../types';
+import { DBLibraryDocument } from '@/types';
 
-import { ApiError, ApiErrorCode } from '../../../../../types/api/error';
-import { ApiGetLibrariesLidSchema } from '../../../../../types/api/libraries/schema';
-import { DBCollections } from '../../../../../types/database/collections';
-import { ReqIdParams } from '../../../../../types/routes';
+import { ApiError, ApiErrorCode } from '@/types/api/error';
+import { ApiGetLibrariesLidSchema } from '@/types/api/libraries/schema';
+import { DBCollections } from '@/types/database/collections';
+import { ReqIdParams } from '@/types/routes';
 
-import { dbQuery } from '../../../../../utils/database';
-import { validateDbId } from '../../../../../utils/middlewares';
-import { aceInTheHole } from '../../../../../utils/various';
+import { dbQuery } from '@/utils/database';
+import { validateDbId } from '@/utils/middlewares';
+import { aceInTheHole } from '@/utils/various';
 
 export function route(router: Router): void {
 

@@ -1,14 +1,14 @@
 import { Router, Request } from "express";
-import { DBLabelDocument } from "../../../../types";
+import { DBLabelDocument } from "@/types";
 
-import { ApiError, ApiErrorCode } from '../../../../types/api/error';
-import { ApiGetLabels, ApiGetLabelsLid, ApiPatchLabelsLidBody, ApiPostLabelsBody, ApiPostLabelsResult, ApiPutLabelsLidBody } from '../../../../types/api/labels';
-import { DBCollections } from '../../../../types/database/collections';
-import { ReqIdParams } from '../../../../types/routes';
+import { ApiError, ApiErrorCode } from '@/types/api/error';
+import { ApiGetLabels, ApiGetLabelsLid, ApiPatchLabelsLidBody, ApiPostLabelsBody, ApiPostLabelsResult, ApiPutLabelsLidBody } from '@/types/api/labels';
+import { DBCollections } from '@/types/database/collections';
+import { ReqIdParams } from '@/types/routes';
 
-import { dbId, dbQuery, dbTransaction } from '../../../../utils/database';
-import { validate, purge, validateDbId } from "../../../../utils/middlewares";
-import { aceInTheHole } from '../../../../utils/various';
+import { dbId, dbQuery, dbTransaction } from '@/utils/database';
+import { validate, purge, validateDbId } from "@/utils/middlewares";
+import { aceInTheHole } from '@/utils/various';
 
 import { validatePostOrPutLabels, purgePostLabels, purgePutLabels, validatePatchLabels, purgePatchLabels } from "./utils";
 

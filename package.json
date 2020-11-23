@@ -10,9 +10,6 @@
     "lint": "eslint src/**/*.ts --format codeframe",
     "lint:fix": "eslint src/**/*.ts --format codeframe --fix"
   },
-  "_moduleAliases": {
-    "@config": "dist/config/index"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -53,5 +50,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "_moduleAliases": {
+    "@": "dist"
   }
 }

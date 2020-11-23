@@ -1,5 +1,5 @@
 import * as puppeteer from 'puppeteer';
-import { ApiGetIsbn } from '../../types/api/isbn';
+import { ApiGetIsbn } from '@/types/api/isbn';
 import getScratchers from './scratchers';
 
 export interface Scratcher {
