@@ -1,9 +1,4 @@
-export interface DBLibrarySchemaResource {
-    id: string;
-    name: string;
-}
-
 export interface DBLibrarySchema {
-    resources: DBLibrarySchemaResource[];
+    resources: string[];
     ubications: string[];
 }
