@@ -10,7 +10,7 @@ import { ReqIdParams } from '../../../../types/routes';
 import { dbQuery, dbTransaction } from '../../../../utils/database';
 import { validate, purge, validateDbId } from "../../../../utils/middlewares";
 import { aceInTheHole } from '../../../../utils/various';
-import {  exists, unlink } from '../../../../utils/fs-async';
+import { exists, unlink } from '../../../../utils/fs-async';
 
 import CONFIG from '../../../../config';
 
@@ -103,7 +103,7 @@ export function route(router: Router): void {
     router.delete('/libraries/:lid', validateDbId('lid'), async (req: Request & ReqIdParams, res) => {
         await aceInTheHole(res, async () => {
             const lid = req.idParams.lid;
-            const deleted = await dbTransaction<boolean>(async (db, session) => {
+            await dbTransaction<void>(async (db, session) => {
                 const queryResult = await db.collection(DBCollections.LIBRARIES).findOneAndDelete({ _id: lid }, { session });
                 const library: DBLibraryDocument = queryResult.value;
                 const deleted = !!library;
@@ -136,18 +136,7 @@ export function route(router: Router): void {
 
                     }
                 }
-
-                return deleted;
             });
-
-            if (!deleted) {
-                const err: ApiError = {
-                    message: 'Library not found',
-                    code: ApiErrorCode.PROVIDED_ID_NOT_FOUND,
-                };
-                res.status(404).send(err);
-                return;
-            }
 
             res.send();
         });

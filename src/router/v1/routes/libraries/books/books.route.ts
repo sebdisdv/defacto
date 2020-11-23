@@ -41,7 +41,7 @@ export function route(router: Router): void {
                 return db.collection(DBCollections.BOOKS).find({ libraryId: lid }).toArray();
             });
 
-            res.send(books);
+            res.send(books as ApiGetLibrariesLidBooks);
         });
     });
  
