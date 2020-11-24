@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "transpile": "tsc",
-    "start": "node dist/main",
+    "start:dev": "node dist/main",
     "serve": "npm run transpile && npm run start",
+    "start": "npm run serve",
     "lint": "eslint src/**/*.ts --format codeframe",
     "lint:fix": "eslint src/**/*.ts --format codeframe --fix"
   },
